@@ -2,8 +2,8 @@
 A   Baby   class and methods that use the Baby class.
 
 Authors: David Mutchler, Vibha Alangar, Dave Fisher, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Landon Bundy.
+"""  # TODdO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 def main():
@@ -28,6 +28,9 @@ def main():
         Baby McKinley is CRYING uncontrollably!  Feed the Baby!
         Baby McKinley is CRYING uncontrollably!  Feed the Baby!
     """
+
+
+class Baby(object):
     mckinley = Baby('McKinley')
     keegan = Baby('Keegan')
     for k in range(2):
