@@ -647,7 +647,7 @@ class Line(object):
           :rtype: bool
         """
         # --------------------------------------------------------------
-        # TODO: 12.
+        # TfODO: 12.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -682,16 +682,10 @@ class Line(object):
         # are different from each other.
         ################################################################
 
-        run = self.start.x + self.end.x
-        rise = self.start.y + self.end.y
-        slope = float(rise/run)
-        run2 = line2.start.x + line2.end.x
-        rise2 = line2.start.y + line2.end.y
-        slope2 = float(rise2/run2)
-        if round(slope2, 12) == round(slope, 12):
-            return 'true'
+        if round(self.slope(), 12) == round(line2.slope(), 12):
+            return True
         else:
-            return 'false'
+            return False
 
     def reset(self):
         """
@@ -732,9 +726,8 @@ class Line(object):
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
 
-        other = self.start1
-        other2 = self.end1
-        line1 = Line(other, other2)
+        self.start = self.start1
+        self.end = self.end1
 
 ########################################################################
 # The TEST functions for the  Line  class begin here.

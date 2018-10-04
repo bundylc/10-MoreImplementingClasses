@@ -19,10 +19,10 @@ def main():
     print('Un-comment the calls in MAIN one by one')
     print(' to run the testing code as you complete the TODOs.')
 
-    # run_test_simple_t()
-    # run_test_set_colors()
-    # run_test_move_by()
-    # run_test_clone()
+    run_test_simple_t()
+    run_test_set_colors()
+    run_test_move_by()
+    run_test_clone()
 
 
 def run_test_simple_t():
@@ -111,8 +111,7 @@ class CapitalT(object):
     See the PDFs, especially dimenstions.pdf, to help you understand this.
     """
 
-    def __init__(self, intersection_center, width, height, letter_thickness):
-        """
+    """
         What comes in:
            -- self
            -- an rg.Point for the intersection center of the CapitalT
@@ -145,14 +144,29 @@ class CapitalT(object):
           :type height:   int
           :type letter_thickness:   int
         """
-        # --------------------------------------------------------------
-        # TODO: 3.
-        #   READ the above specification, including the Example.
-        #   Implement this method
-        #   Note: you will need to also implement attach_to before testing
-        # --------------------------------------------------------------
+    # --------------------------------------------------------------
+    # TODOne: 3.
+    #   READ the above specification, including the Example.
+    #   Implement this method
+    #   Note: you will need to also implement attach_to before testing
+    # --------------------------------------------------------------
 
-    def attach_to(self, window):
+    def __init__(self, intersection_center, width, height, letter_thickness):
+        point = intersection_center
+        x1 = (point.x - (width/2))
+        x2 = (point.x + (width/2))
+        y1 = (point.y - (letter_thickness/2))
+        y2 = (point.y + (letter_thickness/2))
+        corner1 = rg.Point(x1, y1)
+        corner2 = rg.Point(x2, y2)
+        self.h_rect = rg.Rectangle(corner1, corner2)
+        x3 = (point.x - (letter_thickness/2))
+        x4 = (point.x + (letter_thickness/2))
+        y4 = (y1 + height)
+        corner3 = rg.Point(x3, y1)
+        corner4 = rg.Point(x4, y4)
+        self.v_rect = rg.Rectangle(corner3, corner4)
+
         """
         What comes in:
            -- self
@@ -171,13 +185,15 @@ class CapitalT(object):
           :type window: rg.RoseWindow
         """
         # --------------------------------------------------------------
-        # TODO: 4.
+        # TODOb: 4.
         #   READ the above specification, including the Example.
         #   Implement and test this method by looking at the console and
         #     the graphics window (compare it to simple_t.pdf)
         # --------------------------------------------------------------
+    def attach_to(self, window):
+        self.v_rect.attach_to(window)
+        self.h_rect.attach_to(window)
 
-    def set_colors(self, fill_color, outline_color):
         """
         What comes in:
           -- self
@@ -198,14 +214,18 @@ class CapitalT(object):
           :type outline_color: str
         """
         # --------------------------------------------------------------
-        # TODO: 5.
+        # TODbO: 5.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
         #     set_colors.pdf.
         # --------------------------------------------------------------
+    def set_colors(self, fill_color, outline_color):
+        self.h_rect.fill_color = fill_color
+        self.v_rect.fill_color = fill_color
+        self.v_rect.outline_color = outline_color
+        self.h_rect.outline_color = outline_color
 
-    def move_by(self, dx, dy):
         """
         What comes in:
            -- self
@@ -228,15 +248,23 @@ class CapitalT(object):
           :type dy: int
         """
         # --------------------------------------------------------------
-        # TODO: 6.
+        # TbODO: 6.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
         #     move_by.pdf. Note: the pdf shows the different locations
         #     that the T moves through, but there is only 1 T at any moment.
         # --------------------------------------------------------------
+    def move_by(self, dx, dy):
+        self.h_rect.corner_1.x = self.h_rect.corner_1.x + dx
+        self.v_rect.corner_1.x = self.v_rect.corner_1.x + dx
+        self.h_rect.corner_1.y = self.h_rect.corner_1.y + dy
+        self.v_rect.corner_1.y = self.v_rect.corner_1.y + dy
+        self.h_rect.corner_2.x = self.h_rect.corner_2.x + dx
+        self.v_rect.corner_2.x = self.v_rect.corner_2.x + dx
+        self.h_rect.corner_2.y = self.h_rect.corner_2.y + dy
+        self.v_rect.corner_2.y = self.v_rect.corner_2.y + dy
 
-    def clone(self):
         """
         What comes in:
           -- self
@@ -262,6 +290,10 @@ class CapitalT(object):
         #     run_test method in main. Compare the graphics window to
         #     clone.pdf.
         # --------------------------------------------------------------
+
+    def clone(self):
+
+
 
 
 # ----------------------------------------------------------------------
